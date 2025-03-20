@@ -54,11 +54,11 @@ class MedicalAppointment
     #[ORM\Column]
     private string $foldedLastName;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups(['medical_appointment:read'])]
     private ?string $email = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups(['medical_appointment:read'])]
     private ?string $phone = null;
 
@@ -66,11 +66,11 @@ class MedicalAppointment
     #[Groups(['medical_appointment:read'])]
     private DateTimeImmutable $createdAt;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups(['medical_appointment:read'])]
     private ?DateTimeImmutable $cancelledAt = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $cancellationReason = null;
 
     // TODO: add semantic constructor to build a medical appointment from a practitioner and availability objects
