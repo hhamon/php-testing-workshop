@@ -32,13 +32,11 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
-        <!--
         <report>
             <html outputDirectory="build/coverage/html"/>
             <text outputFile="build/coverage/coverage.txt"/>
             <clover outputFile="build/coverage/clover.xml"/>
         </report>
-        -->
     </coverage>
 
     <listeners>
@@ -49,6 +47,5 @@
         <extension class="Symfony\Component\Panther\ServerExtension" />
         <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
         <extension class="Zenstruck\Browser\Test\BrowserExtension" />
-        <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
 </phpunit>

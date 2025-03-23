@@ -111,6 +111,30 @@
         "build:frontend-prod": [
             "@php bin/console tailwind:build --minify --env prod",
             "@php bin/console asset-map:compile --env prod"
+        ],
+        "test:phpunit": [
+            "@php bin/console doctrine:database:drop --force --if-exists --env test",
+            "@php bin/console doctrine:database:create --if-not-exists --env test",
+            "@php bin/console doctrine:schema:update --force --env test",
+            "@php bin/phpunit tests/Unit",
+            "@php bin/phpunit tests/Integration",
+            "@php bin/phpunit tests/Functional"
+        ],
+        "test:behat": [
+            "@php bin/console doctrine:database:drop --force --if-exists --env test",
+            "@php bin/console doctrine:database:create --if-not-exists --env test",
+            "@php bin/console doctrine:schema:update --force --env test",
+            "@php vendor/bin/behat"
+        ],
+        "test:e2e": [
+            "@php bin/console doctrine:database:drop --force --if-exists --env test",
+            "@php bin/console doctrine:database:create --if-not-exists --env test",
+            "@php bin/console doctrine:schema:update --force --env test",
+            "@php bin/phpunit tests/EndToEnd"
+        ],
+        "test:all": [
+            "@composer test:phpunit",
+            "@composer test:behat"
         ]
     },
     "conflict": {
